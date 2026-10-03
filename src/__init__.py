@@ -1,1 +1,1 @@
-from .tools import show_dicom_image, show_dicom_info
+from .tools import show_dicom_image, show_dicom_info , explore_repository, index_dicom_repository
