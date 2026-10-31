@@ -1,0 +1,6 @@
+{
+  "versionNumber": 1,
+  "name": "Extract knee abnormalities with examples",
+  "description": "Kaggle task adapter for a single report (plain dict is required by kbench).",
+  "definition": "@kbench.task(name=\"Extract knee abnormalities with examples\")\ndef extract_knee_abnormalities(llm, example_text: str, report: str) -> dict:\n    \"\"\"Kaggle task adapter for a single report (plain dict is required by kbench).\"\"\"\n    prompt = _build_prompt(report, example_text)\n    result = llm.prompt(prompt, schema=KneeAbnormalities)\n\n    output = {}\n\n    for field, value in asdict(result).items():\n        if (\n            isinstance(value, bool)\n            or not isinstance(value, (int, float))\n            or not 0.0 <= value <= 1.0\n        ):\n            raise ValueError(f\"Invalid value for {field}: {value!r}\")\n\n        output[FIELD_TO_COLUMN[field]] = float(value)\n\n    return output\n"
+}
