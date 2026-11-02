@@ -27,18 +27,18 @@ FIELD_TO_COLUMN = {
 
 @dataclass
 class KneeAbnormalities:
-    ACL: float
-    MCL: float
-    medial_meniscus: float
-    lateral_meniscus: float
-    medial_OA: float
-    lateral_OA: float
-    PF_OA: float
-    effusion: float
-    synovitis: float
-    bakers_cyst: float
-    contusion: float
-    fracture: float
+    ACL: float | None
+    MCL: float | None
+    medial_meniscus: float | None
+    lateral_meniscus: float | None
+    medial_OA: float | None
+    lateral_OA: float | None
+    PF_OA: float | None
+    effusion: float | None
+    synovitis: float | None
+    bakers_cyst: float | None
+    contusion: float | None
+    fracture: float | None
 
 
 LABELS = list(FIELD_TO_COLUMN.values())
